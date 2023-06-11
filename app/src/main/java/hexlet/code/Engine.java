@@ -2,6 +2,7 @@ package hexlet.code;
 
 import hexlet.games.Calculator;
 import hexlet.games.Even;
+import hexlet.games.GCD;
 
 import java.util.Scanner;
 
@@ -16,8 +17,14 @@ public class Engine {
             int question = Even.askQuestion();
             String userAnswer = Engine.getAnswer();
             flag = Even.checkAnswer(question, userAnswer);
+
+            if (!flag) {
+                roundNumber += 5;
+            }
+
             roundNumber++;
         }
+
         Engine.gameEnding(roundNumber, userName);
     }
 
@@ -29,13 +36,42 @@ public class Engine {
         int roundNumber = 1;
         while (flag && roundNumber <= 3) {
             int operation = Calculator.getOperation();
-            int first = Calculator.getFirstOperand();
-            int second = Calculator.getSecondOperand();
-            Calculator.askQuestion(operation, first, second);
+            int firstOperand = (int) (Math.random() * 20);
+            int secondOperand = (int) (Math.random() * 20);
+            Calculator.askQuestion(operation, firstOperand, secondOperand);
             String userAnswer = Engine.getAnswer();
-            flag = Calculator.checkAnswer(operation, userAnswer, first, second);
+            flag = Calculator.checkAnswer(operation, userAnswer, firstOperand, secondOperand);
+
+            if (!flag) {
+                roundNumber += 5;
+            }
+
             roundNumber++;
         }
+
+        Engine.gameEnding(roundNumber, userName);
+    }
+
+    public static void greatestCommonDivisorGame() {
+        String userName = Engine.greeting();
+        System.out.println("Find the greatest common divisor of given numbers.");
+
+        boolean flag = true;
+        int roundNumber = 1;
+        while (flag && roundNumber <= 3) {
+            int firstNumber = GCD.getFirstNumber();
+            int secondNumber = GCD.getSecondNumber();
+            GCD.askQuestion(firstNumber, secondNumber);
+            String userAnswer = Engine.getAnswer();
+            flag = GCD.checkAnswer(userAnswer, firstNumber, secondNumber);
+
+            if (!flag) {
+                roundNumber += 5;
+            }
+
+            roundNumber++;
+        }
+
         Engine.gameEnding(roundNumber, userName);
     }
 
@@ -50,10 +86,10 @@ public class Engine {
     }
 
     public static void gameEnding(int roundNumber, String userName) {
-        if (roundNumber <= 3) {
-            System.out.println("Let's try again, " + userName + "!");
-        } else {
+        if (roundNumber == 4) {
             System.out.println("Congratulations, " + userName + "!");
+        } else {
+            System.out.println("Let's try again, " + userName + "!");
         }
     }
 
@@ -65,5 +101,10 @@ public class Engine {
 
     public static void resultGood() {
         System.out.println("Correct!");
+    }
+
+    public static void resultBad(String userAnswer, String correctAnswer) {
+        System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer "
+                + "was '" + correctAnswer + "'.");
     }
 }
