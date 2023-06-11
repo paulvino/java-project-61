@@ -8,3 +8,6 @@ Test of game "is Even"
 
 Test of game "Calculator"
 [![asciicast](https://asciinema.org/a/lSzzM8Lv98ZbjBDVszKXiwiSL.svg)](https://asciinema.org/a/lSzzM8Lv98ZbjBDVszKXiwiSL)
+
+Test of Game "Greatest Common Divisor" (GCD)
+[![asciicast](https://asciinema.org/a/e4UQ80iUs7EjNrlCTIaie7lJu.svg)](https://asciinema.org/a/e4UQ80iUs7EjNrlCTIaie7lJu)
