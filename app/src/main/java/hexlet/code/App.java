@@ -8,6 +8,7 @@ public class App {
         System.out.println("1 - Greet\n"
                 + "2 - Even\n"
                 + "3 - Calculator\n"
+                + "4 - GCD\n"
                 + "0 - Exit");
         System.out.print("Your choice: ");
 
@@ -19,6 +20,7 @@ public class App {
             case "1" -> Cli.getUserName();
             case "2" -> Engine.isEvenGame();
             case "3" -> Engine.calculatorGame();
+            case "4" -> Engine.greatestCommonDivisorGame();
             default -> System.out.println("You entered wrong number.");
         }
     }
