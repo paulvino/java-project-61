@@ -14,13 +14,12 @@ public class Even {
     }
 
     public static boolean checkAnswer(int question, String userAnswer) {
+        String correctAnswer = Even.correctAnswer(question);
 
-        if ((question % 2 == 0 && "yes".equals(userAnswer))
-                || (question % 2 != 0 && "no".equals(userAnswer))) {
+        if (correctAnswer.equals(userAnswer)) {
             Engine.resultGood();
             return true;
         } else {
-            String correctAnswer = correctAnswer(question);
             Engine.resultBad(userAnswer, correctAnswer);
             return false;
         }
