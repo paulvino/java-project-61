@@ -3,7 +3,11 @@ package hexlet.games;
 import hexlet.code.Engine;
 
 public class Progression {
-
+    public static boolean progressionEngine() {
+        int correctAnswer = Progression.askQuestion();
+        String userAnswerProgression = Engine.getAnswer();
+        return Progression.checkAnswer(correctAnswer, userAnswerProgression);
+    }
     public static int askQuestion() {
         System.out.print("Question: ");
 

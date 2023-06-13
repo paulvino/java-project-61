@@ -3,6 +3,16 @@ package hexlet.games;
 import hexlet.code.Engine;
 
 public class Calculator {
+    public static boolean calculatorEngine() {
+        int operationCalc = Calculator.getOperation();
+        int firstOperand = (int) (Math.random() * 20);
+        int secondOperand = (int) (Math.random() * 20);
+        Calculator.askQuestion(operationCalc, firstOperand, secondOperand);
+        long correctAnswerCalc = Calculator.getCorrectAnswer(operationCalc, firstOperand, secondOperand);
+        String userAnswerCalc = Engine.getAnswer();
+        return Calculator.checkAnswer(userAnswerCalc, correctAnswerCalc);
+    }
+
     public static int getOperation() {
         return (int) (Math.random() * 3);
     }
@@ -17,38 +27,24 @@ public class Calculator {
         }
     }
 
-    public static boolean checkAnswer(int operation, String userAnswer, int firstOperand, int secondOperand) {
-
+    public static long getCorrectAnswer(int operation, int firstOperand, int secondOperand) {
         long multiply = (long) firstOperand * secondOperand;
-        int subtraction = firstOperand - secondOperand;
-        int sum = firstOperand + secondOperand;
-        switch (operation) {
-            case 0:
-                if (userAnswer.equals(Long.toString(multiply))) {
-                    Engine.resultGood();
-                    return true;
-                } else {
-                    Engine.resultBad(userAnswer, Long.toString(multiply));
-                    return false;
-                }
-            case 1:
-                if (userAnswer.equals(Integer.toString(firstOperand - secondOperand))) {
-                    Engine.resultGood();
-                    return true;
-                } else {
-                    Engine.resultBad(userAnswer, Integer.toString(subtraction));
-                    return false;
-                }
-            case 2:
-                if (userAnswer.equals(Integer.toString(sum))) {
-                    Engine.resultGood();
-                    return true;
-                } else {
-                    Engine.resultBad(userAnswer, Integer.toString(sum));
-                    return false;
-                }
-            default:
-                return false;
+        long subtraction = (long) firstOperand - secondOperand;
+        long sum = (long) firstOperand + secondOperand;
+        return switch (operation) {
+            case 0 -> multiply;
+            case 1 -> subtraction;
+            default -> sum;
+        };
+    }
+
+    public static boolean checkAnswer(String userAnswer, long correctAnswer) {
+        if (userAnswer.equals(Long.toString(correctAnswer))) {
+            Engine.resultGood();
+            return true;
+        } else {
+            Engine.resultBad(userAnswer, Long.toString(correctAnswer));
+            return false;
         }
     }
 }

@@ -9,113 +9,47 @@ import hexlet.games.Prime;
 import java.util.Scanner;
 
 public class Engine {
-    public static void isEvenGame() {
+
+    public static void gameProcess(String gameChosen) {
         String userName = Engine.greeting();
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         boolean flag = true;
         int roundNumber = 1;
         while (flag && roundNumber <= 3) {
-            int question = Even.askQuestion();
-            String userAnswer = Engine.getAnswer();
-            flag = Even.checkAnswer(question, userAnswer);
-
+            if (roundNumber == 1) {
+                switch (gameChosen) {
+                    case "2" -> System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+                    case "3" -> System.out.println("What is the result of the expression?");
+                    case "4" -> System.out.println("Find the greatest common divisor of given numbers.");
+                    case "5" -> System.out.println("What number is missing in the progression?");
+                    case "6" -> System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+                    default -> System.out.println("You entered wrong number.");
+                }
+            }
+            switch (gameChosen) {
+                case "2":
+                    flag = Even.evenEngine();
+                    break;
+                case "3":
+                    flag = Calculator.calculatorEngine();
+                    break;
+                case "4":
+                    flag = GCD.greatestCommonDivisorEngine();
+                    break;
+                case "5":
+                    flag = Progression.progressionEngine();
+                    break;
+                case "6":
+                    flag = Prime.primeEngine();
+                    break;
+                default:
+                    System.out.println("Something went wrong. :(");
+            }
             if (!flag) {
                 roundNumber += 5;
             }
-
             roundNumber++;
         }
-
-        Engine.gameEnding(roundNumber, userName);
-    }
-
-    public static void calculatorGame() {
-        String userName = Engine.greeting();
-        System.out.println("What is the result of the expression?");
-
-        boolean flag = true;
-        int roundNumber = 1;
-        while (flag && roundNumber <= 3) {
-            int operation = Calculator.getOperation();
-            int firstOperand = (int) (Math.random() * 20);
-            int secondOperand = (int) (Math.random() * 20);
-            Calculator.askQuestion(operation, firstOperand, secondOperand);
-            String userAnswer = Engine.getAnswer();
-            flag = Calculator.checkAnswer(operation, userAnswer, firstOperand, secondOperand);
-
-            if (!flag) {
-                roundNumber += 5;
-            }
-
-            roundNumber++;
-        }
-
-        Engine.gameEnding(roundNumber, userName);
-    }
-
-    public static void greatestCommonDivisorGame() {
-        String userName = Engine.greeting();
-        System.out.println("Find the greatest common divisor of given numbers.");
-
-        boolean flag = true;
-        int roundNumber = 1;
-        while (flag && roundNumber <= 3) {
-            int firstNumber = GCD.getFirstNumber();
-            int secondNumber = GCD.getSecondNumber();
-            GCD.askQuestion(firstNumber, secondNumber);
-            String userAnswer = Engine.getAnswer();
-            flag = GCD.checkAnswer(userAnswer, firstNumber, secondNumber);
-
-            if (!flag) {
-                roundNumber += 5;
-            }
-
-            roundNumber++;
-        }
-
-        Engine.gameEnding(roundNumber, userName);
-    }
-
-    public static void progressionGame() {
-        String userName = Engine.greeting();
-        System.out.println("What number is missing in the progression?");
-
-        boolean flag = true;
-        int roundNumber = 1;
-        while (flag && roundNumber <= 3) {
-            int correctAnswer = Progression.askQuestion();
-            String userAnswer = Engine.getAnswer();
-            flag = Progression.checkAnswer(correctAnswer, userAnswer);
-
-            if (!flag) {
-                roundNumber += 5;
-            }
-
-            roundNumber++;
-        }
-
-        Engine.gameEnding(roundNumber, userName);
-    }
-
-    public static void primeGame() {
-        String userName = Engine.greeting();
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-
-        boolean flag = true;
-        int roundNumber = 1;
-        while (flag && roundNumber <= 3) {
-            int question = Prime.askQuestion();
-            String userAnswer = Engine.getAnswer();
-            flag = Prime.checkAnswer(question, userAnswer);
-
-            if (!flag) {
-                roundNumber += 5;
-            }
-
-            roundNumber++;
-        }
-
         Engine.gameEnding(roundNumber, userName);
     }
 

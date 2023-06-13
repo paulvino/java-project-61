@@ -3,7 +3,11 @@ package hexlet.games;
 import hexlet.code.Engine;
 
 public class Prime {
-
+    public static boolean primeEngine() {
+        int questionPrime = Prime.askQuestion();
+        String userAnswerPrime = Engine.getAnswer();
+        return Prime.checkAnswer(questionPrime, userAnswerPrime);
+    }
     public static int askQuestion() {
         int question = (int) (Math.random() * 100);
         System.out.println("Question: " + question);

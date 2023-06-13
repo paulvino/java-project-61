@@ -16,15 +16,16 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
         String userChoice = scanner.next();
+        System.out.println();
 
         switch (userChoice) {
             case "0" -> System.out.println("See you next time!");
             case "1" -> Cli.getUserName();
-            case "2" -> Engine.isEvenGame();
-            case "3" -> Engine.calculatorGame();
-            case "4" -> Engine.greatestCommonDivisorGame();
-            case "5" -> Engine.progressionGame();
-            case "6" -> Engine.primeGame();
+            case "2" -> Engine.gameProcess("2");
+            case "3" -> Engine.gameProcess("3");
+            case "4" -> Engine.gameProcess("4");
+            case "5" -> Engine.gameProcess("5");
+            case "6" -> Engine.gameProcess("6");
             default -> System.out.println("You entered wrong number.");
         }
     }

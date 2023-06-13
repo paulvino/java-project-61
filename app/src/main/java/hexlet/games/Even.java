@@ -3,6 +3,12 @@ package hexlet.games;
 import hexlet.code.Engine;
 
 public class Even {
+    public static boolean evenEngine() {
+        int questionEven = Even.askQuestion();
+        String userAnswerEven = Engine.getAnswer();
+        return Even.checkAnswer(questionEven, userAnswerEven);
+    }
+
     public static int askQuestion() {
         int question = (int) (Math.random() * 100);
         System.out.println("Question: " + question);
