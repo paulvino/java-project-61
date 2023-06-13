@@ -9,7 +9,7 @@ public class GCD {
         GCD.askQuestion(firstNumber, secondNumber);
         int correctAnswerGCD = GCD.getCorrectAnswer(firstNumber, secondNumber);
         String userAnswerGCD = Engine.getAnswer();
-        return GCD.checkAnswer(userAnswerGCD, correctAnswerGCD);
+        return GCD.checkAnswer(correctAnswerGCD, userAnswerGCD);
     }
 
     public static void askQuestion(int firstNumber, int secondNumber) {
@@ -28,7 +28,7 @@ public class GCD {
         return correctAnswer;
     }
 
-    public static boolean checkAnswer(String userAnswer, int correctAnswer) {
+    public static boolean checkAnswer(int correctAnswer, String userAnswer) {
 
         if (userAnswer.equals(Integer.toString(correctAnswer))) {
             Engine.resultGood();

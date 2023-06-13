@@ -32,12 +32,12 @@ public class Progression {
         return answer;
     }
 
-    public static boolean checkAnswer(int answer, String userAnswer) {
-        if (userAnswer.equals(Integer.toString(answer))) {
+    public static boolean checkAnswer(int correctAnswer, String userAnswer) {
+        if (userAnswer.equals(Integer.toString(correctAnswer))) {
             Engine.resultGood();
             return true;
         } else {
-            Engine.resultBad(userAnswer, Integer.toString(answer));
+            Engine.resultBad(userAnswer, Integer.toString(correctAnswer));
             return false;
         }
     }

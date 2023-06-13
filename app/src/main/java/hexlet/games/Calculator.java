@@ -10,7 +10,7 @@ public class Calculator {
         Calculator.askQuestion(operationCalc, firstOperand, secondOperand);
         long correctAnswerCalc = Calculator.getCorrectAnswer(operationCalc, firstOperand, secondOperand);
         String userAnswerCalc = Engine.getAnswer();
-        return Calculator.checkAnswer(userAnswerCalc, correctAnswerCalc);
+        return Calculator.checkAnswer(correctAnswerCalc, userAnswerCalc);
     }
 
     public static int getOperation() {
@@ -38,7 +38,7 @@ public class Calculator {
         };
     }
 
-    public static boolean checkAnswer(String userAnswer, long correctAnswer) {
+    public static boolean checkAnswer(long correctAnswer, String userAnswer) {
         if (userAnswer.equals(Long.toString(correctAnswer))) {
             Engine.resultGood();
             return true;
