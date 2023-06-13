@@ -13,7 +13,7 @@ public class GCD {
     }
 
     public static void askQuestion(int firstNumber, int secondNumber) {
-        System.out.println("Question: " + firstNumber + ", " + secondNumber);
+        System.out.println("Question: " + firstNumber + " " + secondNumber);
     }
 
     public static int getCorrectAnswer(int firstNumber, int secondNumber) {
