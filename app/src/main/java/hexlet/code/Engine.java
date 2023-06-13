@@ -4,6 +4,7 @@ import hexlet.games.Calculator;
 import hexlet.games.Even;
 import hexlet.games.GCD;
 import hexlet.games.Progression;
+import hexlet.games.Prime;
 
 import java.util.Scanner;
 
@@ -97,6 +98,26 @@ public class Engine {
         Engine.gameEnding(roundNumber, userName);
     }
 
+    public static void primeGame() {
+        String userName = Engine.greeting();
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+
+        boolean flag = true;
+        int roundNumber = 1;
+        while (flag && roundNumber <= 3) {
+            int question = Prime.askQuestion();
+            String userAnswer = Engine.getAnswer();
+            flag = Prime.checkAnswer(question, userAnswer);
+
+            if (!flag) {
+                roundNumber += 5;
+            }
+
+            roundNumber++;
+        }
+
+        Engine.gameEnding(roundNumber, userName);
+    }
 
     public static String greeting() {
         System.out.println("Welcome to the Brain Games!");

@@ -10,6 +10,7 @@ public class App {
                 + "3 - Calculator\n"
                 + "4 - GCD\n"
                 + "5 - Progression\n"
+                + "6 - Prime\n"
                 + "0 - Exit");
         System.out.print("Your choice: ");
 
@@ -23,6 +24,7 @@ public class App {
             case "3" -> Engine.calculatorGame();
             case "4" -> Engine.greatestCommonDivisorGame();
             case "5" -> Engine.progressionGame();
+            case "6" -> Engine.primeGame();
             default -> System.out.println("You entered wrong number.");
         }
     }
