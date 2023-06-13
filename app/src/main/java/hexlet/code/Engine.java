@@ -15,7 +15,9 @@ public class Engine {
 
         boolean flag = true;
         int roundNumber = 1;
-        while (flag && roundNumber <= 3) {
+        final int finalRoundNumber = 3;
+        final int roundNumberForMistakes = 5;
+        while (flag && roundNumber <= finalRoundNumber) {
             if (roundNumber == 1) {
                 switch (gameChosen) {
                     case "2" -> System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
@@ -46,7 +48,7 @@ public class Engine {
                     System.out.println("Something went wrong. :(");
             }
             if (!flag) {
-                roundNumber += 5;
+                roundNumber += roundNumberForMistakes;
             }
             roundNumber++;
         }
@@ -63,7 +65,8 @@ public class Engine {
     }
 
     public static void gameEnding(int roundNumber, String userName) {
-        if (roundNumber == 4) {
+        final int roundNumberWinner = 4;
+        if (roundNumber == roundNumberWinner) {
             System.out.println("Congratulations, " + userName + "!");
         } else {
             System.out.println("Let's try again, " + userName + "!");

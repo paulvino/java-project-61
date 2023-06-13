@@ -11,9 +11,13 @@ public class Progression {
     public static int askQuestion() {
         System.out.print("Question: ");
 
-        int step = (int) (1 + (Math.random() * 8));
-        int start = (int) (1 + (Math.random() * 15));
-        int length = (int) (start + 5 + (Math.random() * 3));
+        final int numberOfStep = 8;
+        int step = (int) (1 + (Math.random() * numberOfStep));
+        final int numberOfBorderForStart = 15;
+        int start = (int) (1 + (Math.random() * numberOfBorderForStart));
+        final int numberForLength = 3;
+        final int minNumbers = 5;
+        int length = (int) (start + minNumbers + (Math.random() * numberForLength));
         int replace = (int) (Math.random() * length);
         int answer = 0;
 

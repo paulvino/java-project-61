@@ -9,7 +9,8 @@ public class Prime {
         return Prime.checkAnswer(questionPrime, userAnswerPrime);
     }
     public static int askQuestion() {
-        int question = (int) (Math.random() * 100);
+        final int numberOfBorderForPrime = 100;
+        int question = (int) (Math.random() * numberOfBorderForPrime);
         System.out.println("Question: " + question);
         return question;
     }

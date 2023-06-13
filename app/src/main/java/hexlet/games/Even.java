@@ -10,7 +10,8 @@ public class Even {
     }
 
     public static int askQuestion() {
-        int question = (int) (Math.random() * 100);
+        final int numberOfBorderForEven = 100;
+        int question = (int) (Math.random() * numberOfBorderForEven);
         System.out.println("Question: " + question);
         return question;
     }

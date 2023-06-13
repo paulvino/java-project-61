@@ -5,8 +5,9 @@ import hexlet.code.Engine;
 public class Calculator {
     public static boolean calculatorEngine() {
         int operationCalc = Calculator.getOperation();
-        int firstOperand = (int) (Math.random() * 20);
-        int secondOperand = (int) (Math.random() * 20);
+        final int numberOfBorderForCalc = 20;
+        int firstOperand = (int) (Math.random() * numberOfBorderForCalc);
+        int secondOperand = (int) (Math.random() * numberOfBorderForCalc);
         Calculator.askQuestion(operationCalc, firstOperand, secondOperand);
         long correctAnswerCalc = Calculator.getCorrectAnswer(operationCalc, firstOperand, secondOperand);
         String userAnswerCalc = Engine.getAnswer();
@@ -14,7 +15,8 @@ public class Calculator {
     }
 
     public static int getOperation() {
-        return (int) (Math.random() * 3);
+        final int numberOfOperations = 3;
+        return (int) (Math.random() * numberOfOperations);
     }
 
     public static void askQuestion(int operation, int firstOperand, int secondOperand) {

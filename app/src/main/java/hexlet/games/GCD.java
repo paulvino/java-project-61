@@ -4,8 +4,9 @@ import hexlet.code.Engine;
 
 public class GCD {
     public static boolean greatestCommonDivisorEngine() {
-        int firstNumber = (int) (1 + (Math.random() * 100));
-        int secondNumber = (int) (1 + (Math.random() * 100));
+        final int numberOfBorderForGCD = 100;
+        int firstNumber = (int) (1 + (Math.random() * numberOfBorderForGCD));
+        int secondNumber = (int) (1 + (Math.random() * numberOfBorderForGCD));
         GCD.askQuestion(firstNumber, secondNumber);
         int correctAnswerGCD = GCD.getCorrectAnswer(firstNumber, secondNumber);
         String userAnswerGCD = Engine.getAnswer();
