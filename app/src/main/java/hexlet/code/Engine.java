@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.games.Calculator;
 import hexlet.games.Even;
 import hexlet.games.GCD;
+import hexlet.games.Progression;
 
 import java.util.Scanner;
 
@@ -64,6 +65,27 @@ public class Engine {
             GCD.askQuestion(firstNumber, secondNumber);
             String userAnswer = Engine.getAnswer();
             flag = GCD.checkAnswer(userAnswer, firstNumber, secondNumber);
+
+            if (!flag) {
+                roundNumber += 5;
+            }
+
+            roundNumber++;
+        }
+
+        Engine.gameEnding(roundNumber, userName);
+    }
+
+    public static void progressionGame() {
+        String userName = Engine.greeting();
+        System.out.println("What number is missing in the progression?");
+
+        boolean flag = true;
+        int roundNumber = 1;
+        while (flag && roundNumber <= 3) {
+            int correctAnswer = Progression.askQuestion();
+            String userAnswer = Engine.getAnswer();
+            flag = Progression.checkAnswer(correctAnswer, userAnswer);
 
             if (!flag) {
                 roundNumber += 5;
