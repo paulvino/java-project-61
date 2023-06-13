@@ -8,11 +8,11 @@ public class GCD {
     }
 
     public static int getFirstNumber() {
-        return (int) (Math.random() * 100);
+        return (int) (1 + (Math.random() * 100));
     }
 
     public static int getSecondNumber() {
-        return (int) (Math.random() * 100);
+        return (int) (1 + (Math.random() * 100));
     }
 
     public static boolean checkAnswer(String userAnswer, int firstNumber, int secondNumber) {

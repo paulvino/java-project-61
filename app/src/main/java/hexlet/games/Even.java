@@ -14,6 +14,7 @@ public class Even {
     }
 
     public static boolean checkAnswer(int question, String userAnswer) {
+
         if ((question % 2 == 0 && "yes".equals(userAnswer))
                 || (question % 2 != 0 && "no".equals(userAnswer))) {
             Engine.resultGood();

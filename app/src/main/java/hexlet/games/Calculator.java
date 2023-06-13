@@ -18,6 +18,7 @@ public class Calculator {
     }
 
     public static boolean checkAnswer(int operation, String userAnswer, int firstOperand, int secondOperand) {
+
         long multiply = (long) firstOperand * secondOperand;
         int subtraction = firstOperand - secondOperand;
         int sum = firstOperand + secondOperand;
