@@ -19,11 +19,11 @@ public class Calculator {
 
     public static void askQuestion(int operation, int firstOperand, int secondOperand) {
         if (operation == 0) {
-            System.out.println("Question: " + firstOperand + "*" + secondOperand);
+            System.out.println("Question: " + firstOperand + " * " + secondOperand);
         } else if (operation == 1) {
-            System.out.println("Question: " + firstOperand + "-" + secondOperand);
+            System.out.println("Question: " + firstOperand + " - " + secondOperand);
         } else if (operation == 2) {
-            System.out.println("Question: " + firstOperand + "+" + secondOperand);
+            System.out.println("Question: " + firstOperand + " + " + secondOperand);
         }
     }
 
