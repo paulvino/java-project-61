@@ -14,3 +14,6 @@ Test of game "Greatest Common Divisor" (GCD)
 
 Test of game "Progression"
 [![asciicast](https://asciinema.org/a/c2PJ1BKe3hxfsElASPrcRClsX.svg)](https://asciinema.org/a/c2PJ1BKe3hxfsElASPrcRClsX)
+
+Test of game "Prime"
+[![asciicast](https://asciinema.org/a/ONXAkBYias8xnyxnQCT975QAm.svg)](https://asciinema.org/a/ONXAkBYias8xnyxnQCT975QAm)
