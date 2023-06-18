@@ -1,16 +1,36 @@
 package hexlet.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Prime {
+    public static void primeGame() {
+        String userName = Cli.getUserName();
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+
+        boolean flag = true;
+        int roundNumber = Utils.START_ROUND_NUMBER;
+        while (flag && roundNumber <= Utils.FINAL_ROUND) {
+            flag = Prime.primeEngine();
+            roundNumber++;
+        }
+
+        if (!flag) {
+            roundNumber += Utils.ROUND_NUMBER_FOR_MISTAKES;
+        }
+
+        Engine.gameEnding(roundNumber, userName);
+    }
+
     public static boolean primeEngine() {
         int questionPrime = Prime.askQuestion();
         String userAnswerPrime = Engine.getAnswer();
         return Prime.checkAnswer(questionPrime, userAnswerPrime);
     }
+
     public static int askQuestion() {
-        final int numberOfBorderForPrime = 100;
-        int question = (int) (Math.random() * numberOfBorderForPrime);
+        int question = (int) (Math.random() * Utils.BORDER_100);
         System.out.println("Question: " + question);
         return question;
     }

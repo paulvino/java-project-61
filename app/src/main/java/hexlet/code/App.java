@@ -1,6 +1,11 @@
 package hexlet.code;
 
 import java.util.Scanner;
+import hexlet.games.Even;
+import hexlet.games.Calculator;
+import hexlet.games.GCD;
+import hexlet.games.Progression;
+import hexlet.games.Prime;
 
 public class App {
     public static void main(String[] args) {
@@ -21,11 +26,11 @@ public class App {
         switch (userChoice) {
             case "0" -> System.out.println("See you next time!");
             case "1" -> Cli.getUserName();
-            case "2" -> Engine.gameProcess("2");
-            case "3" -> Engine.gameProcess("3");
-            case "4" -> Engine.gameProcess("4");
-            case "5" -> Engine.gameProcess("5");
-            case "6" -> Engine.gameProcess("6");
+            case "2" -> Even.evenGame();
+            case "3" -> Calculator.calcGame();
+            case "4" -> GCD.greatestCommonDivisorGame();
+            case "5" -> Progression.progressionGame();
+            case "6" -> Prime.primeGame();
             default -> System.out.println("You entered wrong number.");
         }
     }

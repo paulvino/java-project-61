@@ -1,12 +1,31 @@
 package hexlet.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class GCD {
+    public static void greatestCommonDivisorGame() {
+        String userName = Cli.getUserName();
+        System.out.println("Find the greatest common divisor of given numbers.");
+
+        boolean flag = true;
+        int roundNumber = Utils.START_ROUND_NUMBER;
+        while (flag && roundNumber <= Utils.FINAL_ROUND) {
+            flag = GCD.greatestCommonDivisorEngine();
+            roundNumber++;
+        }
+
+        if (!flag) {
+            roundNumber += Utils.ROUND_NUMBER_FOR_MISTAKES;
+        }
+
+        Engine.gameEnding(roundNumber, userName);
+    }
+
     public static boolean greatestCommonDivisorEngine() {
-        final int numberOfBorderForGCD = 100;
-        int firstNumber = (int) (1 + (Math.random() * numberOfBorderForGCD));
-        int secondNumber = (int) (1 + (Math.random() * numberOfBorderForGCD));
+        int firstNumber = (int) (1 + (Math.random() * Utils.BORDER_100));
+        int secondNumber = (int) (1 + (Math.random() * Utils.BORDER_100));
         GCD.askQuestion(firstNumber, secondNumber);
         int correctAnswerGCD = GCD.getCorrectAnswer(firstNumber, secondNumber);
         String userAnswerGCD = Engine.getAnswer();
@@ -30,7 +49,6 @@ public class GCD {
     }
 
     public static boolean checkAnswer(int correctAnswer, String userAnswer) {
-
         if (userAnswer.equals(Integer.toString(correctAnswer))) {
             Engine.resultGood();
             return true;

@@ -1,13 +1,33 @@
 package hexlet.games;
 
+import hexlet.code.Cli;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Calculator {
-    public static boolean calculatorEngine() {
+    public static final int NUMBER_OF_OPERATIONS = 3;
+    public static void calcGame() {
+        String userName = Cli.getUserName();
+        System.out.println("What is the result of the expression?");
+
+        boolean flag = true;
+        int roundNumber = Utils.START_ROUND_NUMBER;
+        while (flag && roundNumber <= Utils.FINAL_ROUND) {
+            flag = Calculator.calcEngine();
+            roundNumber++;
+        }
+
+        if (!flag) {
+            roundNumber += Utils.ROUND_NUMBER_FOR_MISTAKES;
+        }
+
+        Engine.gameEnding(roundNumber, userName);
+    }
+
+    public static boolean calcEngine() {
         int operationCalc = Calculator.getOperation();
-        final int numberOfBorderForCalc = 20;
-        int firstOperand = (int) (Math.random() * numberOfBorderForCalc);
-        int secondOperand = (int) (Math.random() * numberOfBorderForCalc);
+        int firstOperand = (int) (Math.random() * Utils.BORDER_20);
+        int secondOperand = (int) (Math.random() * Utils.BORDER_20);
         Calculator.askQuestion(operationCalc, firstOperand, secondOperand);
         long correctAnswerCalc = Calculator.getCorrectAnswer(operationCalc, firstOperand, secondOperand);
         String userAnswerCalc = Engine.getAnswer();
@@ -15,8 +35,7 @@ public class Calculator {
     }
 
     public static int getOperation() {
-        final int numberOfOperations = 3;
-        return (int) (Math.random() * numberOfOperations);
+        return (int) (Math.random() * Calculator.NUMBER_OF_OPERATIONS);
     }
 
     public static void askQuestion(int operation, int firstOperand, int secondOperand) {
