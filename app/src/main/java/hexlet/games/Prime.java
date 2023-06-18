@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Prime {
-    public static final int BORDER_MIN_FOR_PRIME = 2;
+    public static final int BORDER_MIN_FOR_PRIME = 3;
     public static void primeGame() {
         String userName = Cli.getUserName();
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
