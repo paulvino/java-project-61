@@ -3,6 +3,8 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/b941d93cd6e0116f9d4e/maintainability)](https://codeclimate.com/github/paulvino/java-project-61/maintainability)
 
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b941d93cd6e0116f9d4e/test_coverage)](https://codeclimate.com/github/paulvino/java-project-61/test_coverage)
+
 Test of game "is Even"
 [![asciicast](https://asciinema.org/a/XU8otTBMjFGfWnlxveEiSTxaW.svg)](https://asciinema.org/a/XU8otTBMjFGfWnlxveEiSTxaW)
 

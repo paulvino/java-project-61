@@ -1,39 +1,23 @@
 package hexlet.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class GCD {
+    public static final String RULES = "Find the greatest common divisor of given numbers.";
     public static void greatestCommonDivisorGame() {
-        String userName = Cli.getUserName();
-        System.out.println("Find the greatest common divisor of given numbers.");
-
-        boolean flag = true;
-        int roundNumber = Utils.START_ROUND_NUMBER;
-        while (flag && roundNumber <= Utils.FINAL_ROUND) {
-            flag = GCD.greatestCommonDivisorEngine();
-            roundNumber++;
+        String[][] gcdData = new String[Utils.NUMBER_OF_ROUNDS_IN_GAME][Utils.NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY];
+        for (String[] round: gcdData) {
+            int firstNumber = (int) (1 + (Math.random() * Utils.BORDER_100));
+            int secondNumber = (int) (1 + (Math.random() * Utils.BORDER_100));
+            round[Utils.QUESTION_INDEX_IN_ARRAY] = getQuestion(firstNumber, secondNumber);
+            round[Utils.CORRECT_ANSWER_INDEX_IN_ARRAY] = Integer.toString(getCorrectAnswer(firstNumber, secondNumber));
         }
-
-        if (!flag) {
-            roundNumber += Utils.ROUND_NUMBER_FOR_MISTAKES;
-        }
-
-        Engine.gameEnding(roundNumber, userName);
+        Engine.gamesEngine(RULES, gcdData);
     }
 
-    public static boolean greatestCommonDivisorEngine() {
-        int firstNumber = (int) (1 + (Math.random() * Utils.BORDER_100));
-        int secondNumber = (int) (1 + (Math.random() * Utils.BORDER_100));
-        GCD.askQuestion(firstNumber, secondNumber);
-        int correctAnswerGCD = GCD.getCorrectAnswer(firstNumber, secondNumber);
-        String userAnswerGCD = Engine.getAnswer();
-        return GCD.checkAnswer(correctAnswerGCD, userAnswerGCD);
-    }
-
-    public static void askQuestion(int firstNumber, int secondNumber) {
-        System.out.println("Question: " + firstNumber + " " + secondNumber);
+    public static String getQuestion(int firstNumber, int secondNumber) {
+        return firstNumber + " " + secondNumber;
     }
 
     public static int getCorrectAnswer(int firstNumber, int secondNumber) {
@@ -46,15 +30,5 @@ public class GCD {
             }
         }
         return correctAnswer;
-    }
-
-    public static boolean checkAnswer(int correctAnswer, String userAnswer) {
-        if (userAnswer.equals(Integer.toString(correctAnswer))) {
-            Engine.resultGood();
-            return true;
-        } else {
-            Engine.resultBad(userAnswer, Integer.toString(correctAnswer));
-            return false;
-        }
     }
 }

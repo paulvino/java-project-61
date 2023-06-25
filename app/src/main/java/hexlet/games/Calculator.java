@@ -1,71 +1,47 @@
 package hexlet.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Calculator {
+    public static final String RULES = "What is the result of the expression?";
     public static final int NUMBER_OF_OPERATIONS = 3;
     public static void calcGame() {
-        String userName = Cli.getUserName();
-        System.out.println("What is the result of the expression?");
-
-        boolean flag = true;
-        int roundNumber = Utils.START_ROUND_NUMBER;
-        while (flag && roundNumber <= Utils.FINAL_ROUND) {
-            flag = Calculator.calcEngine();
-            roundNumber++;
+        String[][] calcData = new String[Utils.NUMBER_OF_ROUNDS_IN_GAME][Utils.NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY];
+        for (String[] round: calcData) {
+            int operationCalc = getOperation();
+            int firstOperand = (int) (Math.random() * Utils.BORDER_20);
+            int secondOperand = (int) (Math.random() * Utils.BORDER_20);
+            round[Utils.QUESTION_INDEX_IN_ARRAY] = getQuestion(operationCalc, firstOperand, secondOperand);
+            round[Utils.CORRECT_ANSWER_INDEX_IN_ARRAY] = getCorrectAnswer(operationCalc, firstOperand, secondOperand);
         }
-
-        if (!flag) {
-            roundNumber += Utils.ROUND_NUMBER_FOR_MISTAKES;
-        }
-
-        Engine.gameEnding(roundNumber, userName);
-    }
-
-    public static boolean calcEngine() {
-        int operationCalc = Calculator.getOperation();
-        int firstOperand = (int) (Math.random() * Utils.BORDER_20);
-        int secondOperand = (int) (Math.random() * Utils.BORDER_20);
-        Calculator.askQuestion(operationCalc, firstOperand, secondOperand);
-        long correctAnswerCalc = Calculator.getCorrectAnswer(operationCalc, firstOperand, secondOperand);
-        String userAnswerCalc = Engine.getAnswer();
-        return Calculator.checkAnswer(correctAnswerCalc, userAnswerCalc);
+        Engine.gamesEngine(RULES, calcData);
     }
 
     public static int getOperation() {
-        return (int) (Math.random() * Calculator.NUMBER_OF_OPERATIONS);
+        return (int) (Math.random() * NUMBER_OF_OPERATIONS);
     }
 
-    public static void askQuestion(int operation, int firstOperand, int secondOperand) {
+    public static String getQuestion(int operation, int firstOperand, int secondOperand) {
+        String question;
         if (operation == 0) {
-            System.out.println("Question: " + firstOperand + " * " + secondOperand);
+            question = firstOperand + " * " + secondOperand;
         } else if (operation == 1) {
-            System.out.println("Question: " + firstOperand + " - " + secondOperand);
-        } else if (operation == 2) {
-            System.out.println("Question: " + firstOperand + " + " + secondOperand);
+            question = firstOperand + " - " + secondOperand;
+        } else {
+            question = firstOperand + " + " + secondOperand;
         }
+        return question;
     }
 
-    public static long getCorrectAnswer(int operation, int firstOperand, int secondOperand) {
-        long multiply = (long) firstOperand * secondOperand;
-        long subtraction = (long) firstOperand - secondOperand;
-        long sum = (long) firstOperand + secondOperand;
+    public static String getCorrectAnswer(int operation, int firstOperand, int secondOperand) {
+        String multiply = Long.toString((long) firstOperand * secondOperand);
+        String subtraction = Integer.toString(firstOperand - secondOperand);
+        String sum = Integer.toString(firstOperand + secondOperand);
         return switch (operation) {
             case 0 -> multiply;
             case 1 -> subtraction;
             default -> sum;
         };
-    }
-
-    public static boolean checkAnswer(long correctAnswer, String userAnswer) {
-        if (userAnswer.equals(Long.toString(correctAnswer))) {
-            Engine.resultGood();
-            return true;
-        } else {
-            Engine.resultBad(userAnswer, Long.toString(correctAnswer));
-            return false;
-        }
     }
 }

@@ -1,53 +1,28 @@
 package hexlet.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Even {
+    public static final String RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     public static void evenGame() {
-        String userName = Cli.getUserName();
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-
-        boolean flag = true;
-        int roundNumber = Utils.START_ROUND_NUMBER;
-        while (flag && roundNumber <= Utils.FINAL_ROUND) {
-            flag = Even.evenEngine();
-            roundNumber++;
+        String[][] evenData = new String[Utils.NUMBER_OF_ROUNDS_IN_GAME][Utils.NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY];
+        for (String[] round: evenData) {
+            String question = getQuestion();
+            String correctAnswer = isEven(question);
+            round[Utils.QUESTION_INDEX_IN_ARRAY] = question;
+            round[Utils.CORRECT_ANSWER_INDEX_IN_ARRAY] = correctAnswer;
         }
-
-        if (!flag) {
-            roundNumber += Utils.ROUND_NUMBER_FOR_MISTAKES;
-        }
-
-        Engine.gameEnding(roundNumber, userName);
+        Engine.gamesEngine(RULES, evenData);
     }
 
-    public static boolean evenEngine() {
-        int question = Even.askQuestion();
-        String correctAnswer = Even.getCorrectAnswer(question);
-        String userAnswerEven = Engine.getAnswer();
-        return Even.checkAnswer(correctAnswer, userAnswerEven);
-    }
-
-    public static int askQuestion() {
-        int question = (int) (Math.random() * Utils.BORDER_100);
-        System.out.println("Question: " + question);
+    public static String getQuestion() {
+        String question = Integer.toString((int) (Math.random() * Utils.BORDER_100));
         return question;
     }
 
-    public static String getCorrectAnswer(int question) {
-        return question % 2 == 0 ? "yes" : "no";
-    }
-
-    public static boolean checkAnswer(String correctAnswer, String userAnswer) {
-
-        if (correctAnswer.equals(userAnswer)) {
-            Engine.resultGood();
-            return true;
-        } else {
-            Engine.resultBad(userAnswer, correctAnswer);
-            return false;
-        }
+    public static String isEven(String question) {
+        int intQuestion = Integer.parseInt(question);
+        return intQuestion % 2 == 0 ? "yes" : "no";
     }
 }

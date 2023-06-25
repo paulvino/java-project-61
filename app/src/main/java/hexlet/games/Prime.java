@@ -1,42 +1,28 @@
 package hexlet.games;
 
-import hexlet.code.Cli;
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public class Prime {
+    public static final String RULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     public static final int BORDER_MIN_FOR_PRIME = 3;
     public static void primeGame() {
-        String userName = Cli.getUserName();
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-
-        boolean flag = true;
-        int roundNumber = Utils.START_ROUND_NUMBER;
-        while (flag && roundNumber <= Utils.FINAL_ROUND) {
-            flag = Prime.primeEngine();
-            roundNumber++;
+        String[][] primeData = new String[Utils.NUMBER_OF_ROUNDS_IN_GAME][Utils.NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY];
+        for (String[] round: primeData) {
+            int question = getQuestion();
+            String correctAnswer = getCorrectAnswer(question);
+            round[Utils.QUESTION_INDEX_IN_ARRAY] = Integer.toString(question);
+            round[Utils.CORRECT_ANSWER_INDEX_IN_ARRAY] = correctAnswer;
         }
-
-        if (!flag) {
-            roundNumber += Utils.ROUND_NUMBER_FOR_MISTAKES;
-        }
-
-        Engine.gameEnding(roundNumber, userName);
+        Engine.gamesEngine(RULES, primeData);
     }
 
-    public static boolean primeEngine() {
-        int questionPrime = Prime.askQuestion();
-        String userAnswerPrime = Engine.getAnswer();
-        return Prime.checkAnswer(questionPrime, userAnswerPrime);
-    }
-
-    public static int askQuestion() {
-        int question = (int) (Prime.BORDER_MIN_FOR_PRIME + Math.random() * Utils.BORDER_100);
-        System.out.println("Question: " + question);
+    public static int getQuestion() {
+        int question = (int) (BORDER_MIN_FOR_PRIME + Math.random() * Utils.BORDER_100);
         return question;
     }
 
-    public static String correctAnswer(int question) {
+    public static String getCorrectAnswer(int question) {
         int counter = 0;
         for (int i = 1; i <= ((question / 2) + 1); i++) {
             if (question % i == 0) {
@@ -48,17 +34,5 @@ public class Prime {
             }
         }
         return "yes";
-    }
-
-    public static boolean checkAnswer(int question, String userAnswer) {
-        String correctAnswer = Prime.correctAnswer(question);
-
-        if (correctAnswer.equals(userAnswer)) {
-            Engine.resultGood();
-            return true;
-        } else {
-            Engine.resultBad(userAnswer, correctAnswer);
-            return false;
-        }
     }
 }
