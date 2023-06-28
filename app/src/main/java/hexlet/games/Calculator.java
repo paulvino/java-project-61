@@ -5,21 +5,20 @@ import hexlet.code.Utils;
 
 public class Calculator {
     public static final String RULES = "What is the result of the expression?";
-    public static final int NUMBER_OF_OPERATIONS = 3;
-    public static void calcGame() {
-        String[][] calcData = new String[Utils.NUMBER_OF_ROUNDS_IN_GAME][Utils.NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY];
-        for (String[] round: calcData) {
-            int operationCalc = getOperation();
-            int firstOperand = (int) (Math.random() * Utils.BORDER_20);
-            int secondOperand = (int) (Math.random() * Utils.BORDER_20);
-            round[Utils.QUESTION_INDEX_IN_ARRAY] = getQuestion(operationCalc, firstOperand, secondOperand);
-            round[Utils.CORRECT_ANSWER_INDEX_IN_ARRAY] = getCorrectAnswer(operationCalc, firstOperand, secondOperand);
-        }
-        Engine.gamesEngine(RULES, calcData);
-    }
+    public static final int[] OPERATIONS = {0, 1, 2};
+    public static final int BORDER_0 = 0;
+    public static final int BORDER_20 = 20;
 
-    public static int getOperation() {
-        return (int) (Math.random() * NUMBER_OF_OPERATIONS);
+    public static void calcGame() {
+        String[][] calcData = new String[Engine.NUMBER_OF_ROUNDS_IN_GAME][Engine.NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY];
+        for (String[] round: calcData) {
+            int operationCalc = Utils.getRandomNumber(BORDER_0, OPERATIONS.length);
+            int firstOperand = Utils.getRandomNumber(BORDER_0, BORDER_20);
+            int secondOperand = Utils.getRandomNumber(BORDER_0, BORDER_20);
+            round[Engine.QUESTION_INDEX_IN_ARRAY] = getQuestion(operationCalc, firstOperand, secondOperand);
+            round[Engine.CORRECT_ANSWER_INDEX_IN_ARRAY] = getCorrectAnswer(operationCalc, firstOperand, secondOperand);
+        }
+        Engine.run(RULES, calcData);
     }
 
     public static String getQuestion(int operation, int firstOperand, int secondOperand) {

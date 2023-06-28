@@ -3,17 +3,23 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
+    public static final int QUESTION_INDEX_IN_ARRAY = 0;
+    public static final int CORRECT_ANSWER_INDEX_IN_ARRAY = 1;
+    public static final int NUMBER_OF_ROUNDS_IN_GAME = 3;
+    public static final int NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY = 2;
 
-    public static void gamesEngine(String rules, String[][] gameData) {
+    public static void run(String rules, String[][] gameData) {
         String userName = Cli.getUserName();
         System.out.println(rules);
-        for (int i = Utils.START_ROUND_NUMBER; i <= Utils.FINAL_ROUND; i++) {
-            askQuestion(gameData[i][Utils.QUESTION_INDEX_IN_ARRAY]);
-            String correctAnswer = gameData[i][Utils.CORRECT_ANSWER_INDEX_IN_ARRAY];
-            String userAnswer = getAnswer();
+        for (int i = 0; i < NUMBER_OF_ROUNDS_IN_GAME; i++) {
+            System.out.println("Question: " + gameData[i][QUESTION_INDEX_IN_ARRAY]);
+            String correctAnswer = gameData[i][CORRECT_ANSWER_INDEX_IN_ARRAY];
+            Scanner answer = new Scanner(System.in);
+            System.out.print("Your answer: ");
+            String userAnswer = answer.next();
             if (userAnswer.equals(correctAnswer)) {
                 System.out.println("Correct!");
-                if (i == Utils.FINAL_ROUND) {
+                if (i == (NUMBER_OF_ROUNDS_IN_GAME - 1)) {
                     System.out.println("Congratulations, " + userName + "!");
                 }
             } else {
@@ -23,15 +29,5 @@ public class Engine {
                 break;
             }
         }
-    }
-
-    public static void askQuestion(String question) {
-        System.out.println("Question: " + question);
-    }
-
-    public static String getAnswer() {
-        Scanner answer = new Scanner(System.in);
-        System.out.print("Your answer: ");
-        return answer.next();
     }
 }

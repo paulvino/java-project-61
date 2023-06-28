@@ -5,24 +5,22 @@ import hexlet.code.Utils;
 
 public class Even {
     public static final String RULES = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    public static final int BORDER_0 = 0;
+    public static final int BORDER_100 = 100;
+
     public static void evenGame() {
-        String[][] evenData = new String[Utils.NUMBER_OF_ROUNDS_IN_GAME][Utils.NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY];
+        String[][] evenData = new String[Engine.NUMBER_OF_ROUNDS_IN_GAME][Engine.NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY];
         for (String[] round: evenData) {
-            String question = getQuestion();
-            String correctAnswer = isEven(question);
-            round[Utils.QUESTION_INDEX_IN_ARRAY] = question;
-            round[Utils.CORRECT_ANSWER_INDEX_IN_ARRAY] = correctAnswer;
+            String question = Integer.toString(Utils.getRandomNumber(BORDER_0, BORDER_100));
+            String correctAnswer = isEven(question) ? "yes" : "no";
+            round[Engine.QUESTION_INDEX_IN_ARRAY] = question;
+            round[Engine.CORRECT_ANSWER_INDEX_IN_ARRAY] = correctAnswer;
         }
-        Engine.gamesEngine(RULES, evenData);
+        Engine.run(RULES, evenData);
     }
 
-    public static String getQuestion() {
-        String question = Integer.toString((int) (Math.random() * Utils.BORDER_100));
-        return question;
-    }
-
-    public static String isEven(String question) {
+    public static boolean isEven(String question) {
         int intQuestion = Integer.parseInt(question);
-        return intQuestion % 2 == 0 ? "yes" : "no";
+        return intQuestion % 2 == 0;
     }
 }
