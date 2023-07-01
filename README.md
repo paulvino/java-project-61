@@ -5,17 +5,17 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b941d93cd6e0116f9d4e/test_coverage)](https://codeclimate.com/github/paulvino/java-project-61/test_coverage)
 
-Test of game "is Even"
+"Is Even Game" Example
 [![asciicast](https://asciinema.org/a/XU8otTBMjFGfWnlxveEiSTxaW.svg)](https://asciinema.org/a/XU8otTBMjFGfWnlxveEiSTxaW)
 
-Test of game "Calculator"
+"Calculator Game" Example
 [![asciicast](https://asciinema.org/a/6zaBflUh90Ki1qvyOFtFQXFgg.svg)](https://asciinema.org/a/6zaBflUh90Ki1qvyOFtFQXFgg)
 
-Test of game "GCD" (Greatest Common Divisor)
+"GCD Game" (Greatest Common Divisor Game) Example
 [![asciicast](https://asciinema.org/a/zFQD3287nfZU2LxrSkTvHrx1i.svg)](https://asciinema.org/a/zFQD3287nfZU2LxrSkTvHrx1i)
 
-Test of game "Progression"
+"Progression Game" Example
 [![asciicast](https://asciinema.org/a/c6aEN8f6n50DVx4OLLdBVckxz.svg)](https://asciinema.org/a/c6aEN8f6n50DVx4OLLdBVckxz)
 
-Test of game "Prime"
+"Prime Game" Example
 [![asciicast](https://asciinema.org/a/tSFHzUwauldK3sKbRswSyVKXO.svg)](https://asciinema.org/a/tSFHzUwauldK3sKbRswSyVKXO)

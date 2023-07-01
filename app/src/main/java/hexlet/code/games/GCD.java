@@ -1,4 +1,4 @@
-package hexlet.games;
+package hexlet.code.games;
 
 import hexlet.code.Engine;
 import hexlet.code.Utils;
@@ -8,7 +8,7 @@ public class GCD {
     public static final int BORDER_1 = 1;
     public static final int BORDER_100 = 100;
 
-    public static void greatestCommonDivisorGame() {
+    public static void startGreatestCommonDivisorGame() {
         String[][] gcdData = new String[Engine.NUMBER_OF_ROUNDS_IN_GAME][Engine.NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY];
         for (String[] round: gcdData) {
             int firstNumber = Utils.getRandomNumber(BORDER_1, BORDER_100);
@@ -16,7 +16,7 @@ public class GCD {
             round[Engine.QUESTION_INDEX_IN_ARRAY] = firstNumber + " " + secondNumber;
             round[Engine.CORRECT_ANSWER_INDEX_IN_ARRAY] = Integer.toString(getCorrectAnswer(firstNumber, secondNumber));
         }
-        Engine.run(RULES, gcdData);
+        Engine.runGameProcess(RULES, gcdData);
     }
 
     public static int getCorrectAnswer(int firstNumber, int secondNumber) {

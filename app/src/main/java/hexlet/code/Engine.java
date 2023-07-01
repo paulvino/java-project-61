@@ -8,9 +8,14 @@ public class Engine {
     public static final int NUMBER_OF_ROUNDS_IN_GAME = 3;
     public static final int NUMBER_OF_ELEMENTS_FOR_GAME_ARRAY = 2;
 
-    public static void run(String rules, String[][] gameData) {
-        String userName = Cli.getUserName();
+    public static void runGameProcess(String rules, String[][] gameData) {
+        System.out.println("Welcome to the Brain Games!");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("May I have your name? ");
+        String userName = scanner.next();
+        System.out.println("Hello, " + userName + "!");
         System.out.println(rules);
+
         for (int i = 0; i < NUMBER_OF_ROUNDS_IN_GAME; i++) {
             System.out.println("Question: " + gameData[i][QUESTION_INDEX_IN_ARRAY]);
             String correctAnswer = gameData[i][CORRECT_ANSWER_INDEX_IN_ARRAY];
@@ -19,15 +24,13 @@ public class Engine {
             String userAnswer = answer.next();
             if (userAnswer.equals(correctAnswer)) {
                 System.out.println("Correct!");
-                if (i == (NUMBER_OF_ROUNDS_IN_GAME - 1)) {
-                    System.out.println("Congratulations, " + userName + "!");
-                }
             } else {
                 System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer "
                         + "was '" + correctAnswer + "'.");
                 System.out.println("Let's try again, " + userName + "!");
-                break;
+                return;
             }
         }
+        System.out.println("Congratulations, " + userName + "!");
     }
 }
